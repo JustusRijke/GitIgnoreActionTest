@@ -18,8 +18,11 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository and submodules
-        uses: actions/checkout@v3
+      - name: Checkout
+        run: |
+          git clone --quiet --depth 1 ${{ github.repository }} .
+          git fetch origin ${{ github.ref }}:SOME_RANDOM_BRANCH_NAME
+          git checkout SOME_RANDOM_BRANCH_NAME
 
       - name: Remove and re-add all files
         run: |
