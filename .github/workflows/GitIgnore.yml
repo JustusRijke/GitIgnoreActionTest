@@ -1,6 +1,6 @@
 # This workflow checks if the repo contains ignored files
 
-name: Gitignore
+name: GitIgnore
 
 on:
   push:
