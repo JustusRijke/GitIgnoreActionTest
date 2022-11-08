@@ -1,0 +1,3 @@
+[submodule "GitIgnoreActionTest_Submodule"]
+	path = GitIgnoreActionTest_Submodule
+	url = https://github.com/JustusRijke/GitIgnoreActionTest_Submodule.git
