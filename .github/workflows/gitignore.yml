@@ -1,0 +1,32 @@
+# This workflow checks if the repo contains ignored files
+
+name: Gitignore
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v3
+
+      - name: Remove and re-add all files
+        run: |
+          git rm -r --cached . && git add .
+
+      - name: Check for staged files
+        id: commit
+        run: |
+          echo "This step fails when ignored files are in the repo (see below for the actual files)"
+          git diff --cached --exit-code
